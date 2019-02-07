@@ -1,0 +1,20 @@
+.peopleForm 
+{
+    margin-top: 2rem; 
+    margin-left: 2rem;
+} 
+
+.statsSec 
+{
+    margin-left: 2rem;
+    border: 1px solid #ced4da;
+    padding: 15px; 
+    margin-top: 2rem;
+} 
+
+.btn 
+{
+    background-color: lawngreen; 
+    margin-left: 1rem;  
+    color: white;
+}
