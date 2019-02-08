@@ -16,10 +16,11 @@
       <h1>People</h1> 
       <div class="statsSec">
             <h2>Stats</h2> 
-      <div>
-          <label>Movie: </label>
-          <label>Rating: </label>
-          <label>Movie Count: </label>
+      <div id="stats">
+        <script id="statsTemplate" type="x-tmpl-mustache">
+          <label>Movie: {{original_title}}</label>
+          <label>Rating: {{vote_average}}</label>
+        </script>
       </div>
     </div>
     
@@ -28,7 +29,7 @@
     </form>
 
     <ul id="movie-list">
-      <script id="template" type="x-tmpl-mustache">
+      <script id="listTemplate" type="x-tmpl-mustache">
           {{#data}}
           * {{name}}
           {{/data}}
@@ -44,4 +45,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> 
   <script src="Movies.js"></script>
   <script src="PublisherSubscriber.js"></script>
+  <script src="Stats.js"></script>
 </html>

@@ -10,7 +10,7 @@ $(document).ready(
             }
 
             var $submit = $("#submit");
-            var template = $('#template').html();
+            var listTemplate = $('#listTemplate').html();
             var $target = $('#movie-list');
             _eventListeners();
             _render();
@@ -26,8 +26,8 @@ $(document).ready(
 
             function _render()
             {
-                Mustache.parse(template);  
-                var rendered = Mustache.render(template, model);
+                Mustache.parse(listTemplate);  
+                var rendered = Mustache.render(listTemplate, model);
                 $target.html(rendered);
             }
             
@@ -42,7 +42,7 @@ $(document).ready(
                         model.data.push(element);
                       });
                       console.log(model.data.find(element => element.vote_average));
-                      PublisherSubscriber.emit(_search,model.data.find(element => element.vote_average));
+                      PublisherSubscriber.emit('_search',model.data.find(element => element.vote_average));
                   });
 
                
