@@ -5,7 +5,7 @@ $(document).ready(
         {
             var model = {
                 data:[],
-                urlBase:"https://api.themoviedb.org",
+                urlBase:"https://api.themoviedb.org/3/",
                 urlKey:"api_key=1559be70a05c8f19263f6a30b261983e"
             }
 
@@ -36,15 +36,16 @@ $(document).ready(
                 console.log("Searched");
                 $.ajax({
                     method: "GET",
-                    url: "https://api.themoviedb.org/3/trending/all/day?api_key=1559be70a05c8f19263f6a30b261983e"
+                    url: model.urlBase+"trending/all/day?"+model.urlKey
                   }).done(function(data) {
                     data.results.forEach(element => {
                         model.data.push(element);
                       });
+                      console.log(model.data.find(element => element.vote_average));
+                      PublisherSubscriber.emit(_search,model.data.find(element => element.vote_average));
                   });
-                  
-                console.log(model.data);
-                PublisherSubscriber.emit(_search,model.data.find(element => element.vote_average));
+
+               
                 _render();
             }
 
