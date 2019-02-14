@@ -6,7 +6,8 @@ $(document).ready(
             var model = {
                 data:[],
                 urlBase:"https://api.themoviedb.org/3/",
-                urlKey:"api_key=1559be70a05c8f19263f6a30b261983e"
+                urlKey:"api_key=1559be70a05c8f19263f6a30b261983e",
+                urlImageBase:"https://image.tmdb.org/t/p/w500/"
             }
 
             var $submit = $("#submit");
@@ -39,14 +40,16 @@ $(document).ready(
                     url: model.urlBase+"trending/all/day?"+model.urlKey
                   }).done(function(data) {
                     data.results.forEach(element => {
+                        element.imageUrl = "https://image.tmdb.org/t/p/w500/" + element.poster_path;
                         model.data.push(element);
                       });
-                      console.log(model.data.find(element => element.vote_average));
-                      PublisherSubscriber.emit('_search',model.data.find(element => element.vote_average));
+                      console.log(model.data.reduce((max, element) => max && max.vote_average > element.vote_average ? max : element, null))
+                      PublisherSubscriber.emit('_search',model.data.reduce((max, element) => max && max.vote_average > element.vote_average ? max : element, null));
+                      _render();
                   });
 
                
-                _render();
+               
             }
 
             return

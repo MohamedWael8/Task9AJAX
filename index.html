@@ -16,26 +16,42 @@
       <h1>People</h1> 
       <div class="statsSec">
             <h2>Stats</h2> 
-      <div id="stats">
-        <script id="statsTemplate" type="x-tmpl-mustache">
-          <label>Movie: {{original_title}}</label>
-          <label>Rating: {{vote_average}}</label>
-        </script>
+            <div id="stats">
+              <script id="statsTemplate" type="x-tmpl-mustache">
+                <label>Movie: {{original_title}} {{original_name}}</label>
+                <label>Rating: {{vote_average}}</label>
+              </script>
+            </div>
       </div>
-    </div>
     
-    <form class="form-inline movieForm">
-        <button type="button" class="btn btn-default" id="submit">Search Movies</button>
-    </form>
-
-    <ul id="movie-list">
-      <script id="listTemplate" type="x-tmpl-mustache">
-          {{#data}}
-          * {{name}}
-          {{/data}}
-        </script>
-    </ul>
-  </div>
+      <form class="form-inline movieForm">
+          <button type="button" class="btn btn-default" id="submit">Search Movies</button>
+      </form>
+    </div>
+    <div class="d-flex flex-row my-flex-container" id="movie-list">
+          <script id="listTemplate" type="x-tmpl-mustache">
+              {{#data}}
+              <div class="p-2 my-flex-item">
+                  <div class="card">
+                      <img class="card-img-top" src="{{imageUrl}}">
+                      <div class="card-block">
+                          <h4 class="card-title">{{original_title}} {{original_name}}</h4>
+                          <div class="meta">
+                              <a href="#">{{populatrity}}</a>
+                          </div>
+                          <div class="card-text">
+                              {{overview}}
+                          </div>
+                      </div>
+                      <div class="card-footer">
+                          <span class="float-right">{{release_date}}</span>
+                          <span><i class=""></i>{{vote_average}}</span>
+                      </div>
+                  </div>
+              </div>
+              {{/data}}
+          </script>
+    </div>
   
   </body>  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
